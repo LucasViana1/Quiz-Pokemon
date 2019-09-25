@@ -17,16 +17,31 @@
     </div>
 
     <!--tela de perguntas-->
-    <div id="perguntas">
-        nº pergunta
-        <div id="n"></div> <br>
+    <div id="perguntas" class="container-fluid">
+        
+        <div class="row">
+            <p>nº pergunta</p>
+            <div id="n" class="col-12"></div> <br>
+            <img src="" id="imgPoke">
+            <div id="opcao1" onclick="geraAlternativas(1)" class="btn btn-primary col-12"></div><br>
+            <div id="opcao2" onclick="geraAlternativas(2)" class="btn btn-primary col-12"></div><br>
+            <div id="opcao3" onclick="geraAlternativas(3)" class="btn btn-primary col-12"></div><br>
+            <div id="opcao4" onclick="geraAlternativas(4)" class="btn btn-primary col-12"></div><br>
 
-        <div id="opcao1" onclick="geraAlternativas()"></div><br>
-        <div id="opcao2" onclick="geraAlternativas()"></div><br>
-        <div id="opcao3" onclick="geraAlternativas()"></div><br>
-        <div id="opcao4" onclick="geraAlternativas()"></div><br>
+            <div id="msgErro" class="alert alert-danger col-12">ERROU</div>
+            <div id="msgAcerto" class="alert alert-success col-12">ACERTOU</div>
+    
+            <input type="button" value="Confirmar" onclick="iniciarQuiz()"><!--TALVEZ REMOVER-->
 
-        <input type="button" value="Confirmar" onclick="iniciarQuiz()"><!--TALVEZ REMOVER-->
+        </div>
+
+    </div>
+
+    <!--tela de pontuação-->
+    <div id="pontuacao">
+        <div>Pontuação</div>
+        <div id="totalPontos"></div>
+        <input type="button" value="Recomeçar" onclick="window.location.reload()">
     </div>
 
 
