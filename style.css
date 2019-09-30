@@ -1,5 +1,6 @@
 #perguntas{
     display: none;
+    /*border: 1px solid black*/
 }
 #msgErro{
     display: none;
@@ -7,6 +8,80 @@
 #msgAcerto{
     display: none;
 }
+
 #pontuacao{
     display: none;
+    width: 80%;
+    margin: auto;
+    /*display: flex;*/
+    justify-content: center;
+    align-items: center;
+
+}
+#inicio{
+    width: 80%;
+    margin: auto;
+    /*display: none;*/
+}
+#perguntas{
+    width: 80%;
+    margin: auto;
+}
+#imgPoke{
+    margin: auto;
+    width: 280px !important;
+}
+.tamanho-img{
+    height: 38px;
+    width: 38px;
+}
+table{
+    padding: 0 !important;
+}
+#texto_pontuacao{
+    font-family: "Palatino Linotype", "Book Antiqua", serif;
+    font-size: 140%;
+    font-style: italic;
+}
+.texto_titulo{
+    font-family: "Palatino Linotype", "Book Antiqua", serif;
+    font-size: 300%;
+    font-weight: bold;
+    font-style: italic;
+    color: rgb(1, 1, 117);
+}
+.texto_comeco{
+    font-family: "Palatino Linotype", "Book Antiqua", serif;
+    font-size: 130%;
+    font-weight: bold;
+}
+.linha_tabela{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.308)
+}
+.n_per{
+    font-size: 120%;
+    font-family: "Courier New", Courier, monospace;
+    color: rgb(1, 1, 102);
+    font-weight: bold;
+}
+#n{
+    font-size: 180%;
+    font-family: "Courier New", Courier, monospace;
+    color: rgb(90, 90, 1);
+    
+}
+footer{
+    background-color: rgb(230, 230, 3);
+    /*margin-top: 50px;*/
+    height: 48px;
+    border-radius: 6px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.274);/*parametros: dimensão direita, dimensão baixo, */
+    display: block;
+    overflow: hidden;
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
+    margin-top: 16%;
+    color: rgba(0, 0, 0, 0.664);
+    
 }

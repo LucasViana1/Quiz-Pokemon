@@ -18,7 +18,10 @@
   */
 
 let arrayPoke = []//obj de pokemons
-
+let nomeJogador = ''
+//caminho das imagens de certo e errado
+const imgCerto = 'img/certo.png'
+const imgErrado = 'img/errado.png'
 
 async function gerarQuiz(){
     let numeros = []
@@ -67,52 +70,76 @@ let arrayAlternativas = []
 //inicia o quiz (mostra primeira pergunta)
 function iniciarQuiz(){//talvez alterar para o nome de 'proximaPergunta'
 
-    
-    document.getElementById('n').innerHTML = perguntaAtual
-    arrayAlternativas = []//limpa as alternativas anteriores
-    //pega apenas as alternativas para essa pergunta (no caso seleciona 4 pokemons)
-    for(i in arrayPoke){
-        if(arrayPoke[i].pergunta == perguntaAtual){
-            arrayAlternativas.push(arrayPoke[i])
-        }
-    }
-    //coloca o nome dos pokemons nas opções
+    //deixa mesma tonalidade azul no inicio do quiz
     for(let i = 0; i < 4; i++){
-        let opcao = document.getElementById(`opcao${i+1}`)
-        //opcao.setAttribute('class', `${arrayAlternativas[i].nome} btn btn-primary`)
-        opcao.innerHTML = arrayAlternativas[i].nome
-        console.log(opcao.getAttribute('id'))
+        document.getElementById(`opcao${i+1}`).style.backgroundColor = 'blue'
     }
 
-    //selecionar aleatoriamente uma das opções como certa e salvar para testar posteriormente se está certo a alternativa selecionada
-    //por ser usado no array, vai de 0 a 3 (totalizando 4)
-    let selecionaCorreta = Math.floor(Math.random() * 4)
-    console.log(selecionaCorreta)
+    let jogador = document.getElementById('jogador')
+    nomeJogador = jogador.value
 
-    //colocar a img da opção certa
-    document.getElementById('imgPoke').src = arrayAlternativas[selecionaCorreta].front_default
+    if(nomeJogador == '' || nomeJogador == null){
+        alert("Favor informe seu nome!")
+    }
 
-    perguntaAtual++
+    else{
+
+        //insere numero da pergunta na tabela e linha divisoria
+        document.getElementById(`n${perguntaAtual}`).innerHTML = perguntaAtual
+        document.getElementById(`pergunta${perguntaAtual}`).setAttribute('class','linha_tabela')
     
-    ocultaInicio()
-    mostraPerguntas()
+        document.getElementById('n').innerHTML = `<u>PERGUNTA Nº ${perguntaAtual}</u>`
+        arrayAlternativas = []//limpa as alternativas anteriores
+        //pega apenas as alternativas para essa pergunta (no caso seleciona 4 pokemons)
+        for(i in arrayPoke){
+            if(arrayPoke[i].pergunta == perguntaAtual){
+                arrayAlternativas.push(arrayPoke[i])
+            }
+        }
+        //coloca o nome dos pokemons nas opções
+        for(let i = 0; i < 4; i++){
+            let opcao = document.getElementById(`opcao${i+1}`)
+            //opcao.setAttribute('class', `${arrayAlternativas[i].nome} btn btn-primary`)
+            opcao.innerHTML = arrayAlternativas[i].nome
+            console.log(opcao.getAttribute('id'))
+        }
+    
+        //selecionar aleatoriamente uma das opções como certa e salvar para testar posteriormente se está certo a alternativa selecionada
+        //por ser usado no array, vai de 0 a 3 (totalizando 4)
+        let selecionaCorreta = Math.floor(Math.random() * 4)
+        console.log(selecionaCorreta)
+    
+        //colocar a img da opção certa
+        document.getElementById('imgPoke').src = arrayAlternativas[selecionaCorreta].front_default
+    
+        perguntaAtual++
+        
+        ocultaInicio()
+        mostraPerguntas()
+    }
+
 }
 
 let pontuacao = 0
 
 //corrige a resposta da pergunta atual, e após alguns segundos avança para a proxima, recebe como parametro o numero da opção selecionada
 function geraAlternativas(numOpcao){
+    
     //compara se a imagem da opção selecionada é igual a imagem que foi mostrada na pergunta
     if(arrayAlternativas[numOpcao-1].front_default == document.getElementById('imgPoke').src){
         console.log("ACERTOU")
-        document.getElementById('msgAcerto').style.display = 'flex'//alerta (talvez remover)
+        //document.getElementById('msgAcerto').style.display = 'flex'//alerta (talvez remover)
         document.getElementById(`opcao${numOpcao}`).style.backgroundColor = 'green'
+        document.getElementById(`img${perguntaAtual - 1}`).src = imgCerto// icone de certo
+        //document.getElementById(`poke${perguntaAtual - 1}`).style.backgroundColor = 'green'// cor de certo
         pontuacao += 10//caso acertou ganha 10 pontos
     }
     else{
         console.log("ERROU")
-        document.getElementById('msgErro').style.display = 'flex'
+        //document.getElementById('msgErro').style.display = 'flex'
         document.getElementById(`opcao${numOpcao}`).style.backgroundColor = 'red'
+        document.getElementById(`img${perguntaAtual - 1}`).src = imgErrado// icone errado
+        //document.getElementById(`poke${perguntaAtual - 1}`).style.backgroundColor = 'red'// cor de errado
         //condição para descobrir qual opção é a correta para dar feedback visual
         for(let i in arrayAlternativas){
             if(arrayAlternativas[i].front_default == document.getElementById('imgPoke').src){
@@ -121,6 +148,8 @@ function geraAlternativas(numOpcao){
             }
         }
     }
+    //coloca img do pokemon certo que foi respondido na tabela
+    document.getElementById(`poke${perguntaAtual - 1}`).src = document.getElementById('imgPoke').src
 
     setTimeout(function(){
         ocultaAlertas()
@@ -146,13 +175,13 @@ function geraAlternativas(numOpcao){
 }
 
 function geraPontuacao(){
-    document.getElementById('totalPontos').innerHTML = pontuacao
+    document.getElementById('texto_pontuacao').innerHTML = `<b>${nomeJogador}</b>, sua pontuação foi <b>${pontuacao}</b> de 100`
 }
 
 function ocultaAlertas(){
     //ocultar msg de erro e acerto (talvez remover)
-    document.getElementById('msgErro').style.display = 'none'
-    document.getElementById('msgAcerto').style.display = 'none'
+    /*document.getElementById('msgErro').style.display = 'none'
+    document.getElementById('msgAcerto').style.display = 'none'*/
 
     //faz com que a cor de fundo de todas as alternativas volter a cor original
     for(let i = 0; i < 4; i++){

@@ -5,47 +5,160 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="script.js"></script>
+    <link rel="icon" href="img/icone_pergunta.png">
+
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <title>Quiz</title>
 </head>
 <body onload="gerarQuiz()">
-    
-    <!--tela de inicio-->
-    <div class="container-fluid" id="inicio">
-        <input type="button" class="btn btn-primary" value="Começar Quiz" onclick="iniciarQuiz()">
-    </div>
 
-    <!--tela de perguntas-->
-    <div id="perguntas" class="container-fluid">
+    <div class="container">
+
+        <nav class="m-auto text-center">
+
+            <img id="logo" class="img-fluid col-6"  src="img/logo.png" alt="logo">
+            <hr>
+        </nav>
+
         
-        <div class="row">
-            <p>nº pergunta</p>
-            <div id="n" class="col-12"></div> <br>
-            <img src="" id="imgPoke">
-            <div id="opcao1" onclick="geraAlternativas(1)" class="btn btn-primary col-12"></div><br>
-            <div id="opcao2" onclick="geraAlternativas(2)" class="btn btn-primary col-12"></div><br>
-            <div id="opcao3" onclick="geraAlternativas(3)" class="btn btn-primary col-12"></div><br>
-            <div id="opcao4" onclick="geraAlternativas(4)" class="btn btn-primary col-12"></div><br>
+        <!--tela de inicio-->
+        <div class="container text-center" id="inicio">
+            <h1 class="texto_titulo" style="margin-bottom: 30px;">POKEQUIZ</h1>
+            <p class="texto_comeco" style="margin-bottom: 25px;">Qual seu nome?</p>
+            <input type="text" id="jogador" style="margin-bottom: 20px;">
+            <br>
+            <input type="button" class="btn btn-primary mt-2" value="Começar Quiz" onclick="iniciarQuiz()">
+        </div>
 
-            <div id="msgErro" class="alert alert-danger col-12">ERROU</div>
-            <div id="msgAcerto" class="alert alert-success col-12">ACERTOU</div>
-    
-            <input type="button" value="Confirmar" onclick="iniciarQuiz()"><!--TALVEZ REMOVER-->
+        <!--tela de perguntas-->
+        <div id="perguntas" class="container">
+            
+            <div class="row container-fluid text-center mb-5">
+
+                <table class="table-sm col-3">
+                    <tr id="pergunta1">
+                        <td class="align-middle n_per" id="n1"></td>
+                        <td> <img id="poke1" src="" alt=""> </td>
+                        <td class="align-middle"> <img id="img1" src="" alt="" class="tamanho-img"> </td>
+                    </tr>
+
+                    <tr id="pergunta2">
+                        <td class="align-middle n_per" id="n2"></td>
+                        <td> <img id="poke2" src="" alt=""> </td>
+                        <td class="align-middle"> <img id="img2" src="" alt="" class="tamanho-img"> </td>
+                    </tr>
+
+                    <tr id="pergunta3">
+                        <td class="align-middle n_per" id="n3"></td>
+                        <td> <img id="poke3" src="" alt=""> </td>
+                        <td class="align-middle"> <img id="img3" src="" alt="" class="tamanho-img"> </td>
+                    </tr>
+
+                    <tr id="pergunta4">
+                        <td class="align-middle n_per" id="n4"></td>
+                        <td> <img id="poke4" src="" alt=""> </td>
+                        <td class="align-middle"> <img id="img4" src="" alt="" class="tamanho-img"> </td>
+                    </tr>
+
+                    <tr id="pergunta5">
+
+                        <td class="align-middle n_per" id="n5"></td>
+                        <td> <img id="poke5" src="" alt=""> </td>
+                        <td class="align-middle"> <img id="img5" src="" alt="" class="tamanho-img"> </td>
+                    </tr>
+
+                    <tr id="pergunta6">
+
+                        <td class="align-middle n_per" id="n6"></td>
+                        <td> <img id="poke6" src="" alt=""> </td>
+                        <td class="align-middle"> <img id="img6" src="" alt="" class="tamanho-img"> </td>
+                    </tr>
+
+                    <tr id="pergunta7">
+
+                        <td class="align-middle n_per" id="n7"></td>
+                        <td> <img id="poke7" src="" alt=""> </td>
+                        <td class="align-middle"> <img id="img7" src="" alt="" class="tamanho-img"> </td>
+                    </tr>
+
+                    <tr id="pergunta8">
+
+                        <td class="align-middle n_per" id="n8"></td>
+                        <td> <img id="poke8" src="" alt=""> </td>
+                        <td class="align-middle"> <img id="img8" src="" alt="" class="tamanho-img"> </td>
+                    </tr>
+
+                    <tr id="pergunta9">
+
+                        <td class="align-middle n_per" id="n9"></td>
+                        <td> <img id="poke9" src="" alt=""> </td>
+                        <td class="align-middle"> <img id="img9" src="" alt="" class="tamanho-img"> </td>
+                    </tr>
+
+                    <tr id="pergunta10">
+
+                        <td class="align-middle n_per" id="n10"></td>                  
+                        <td> <img id="poke10" src="" alt=""> </td>                 
+                        <td class="align-middle"> <img id="img10" src="" alt="" class="tamanho-img"> </td>
+                    </tr>
+                
+                    
+                </table>
+
+            <!--<p>nº pergunta</p>--> 
+            <div id="painel" class="col-6 ml-5">
+                <div id="n" class="col-12 text-center"></div> <br>
+                <img src="" id="imgPoke">
+                <div id="opcao1" onclick="geraAlternativas(1)" class="btn btn-primary col-12 mt-2"></div><br>
+                <div id="opcao2" onclick="geraAlternativas(2)" class="btn btn-primary col-12 mt-2"></div><br>
+                <div id="opcao3" onclick="geraAlternativas(3)" class="btn btn-primary col-12 mt-2"></div><br>
+                <div id="opcao4" onclick="geraAlternativas(4)" class="btn btn-primary col-12 mt-2"></div><br>
+            </div>
+
+                
+
+                <!--<div id="msgErro" class="alert alert-danger col-12">ERROU</div>
+                <div id="msgAcerto" class="alert alert-success col-12">ACERTOU</div>-->
+                <!--<input type="button" value="Confirmar" onclick="iniciarQuiz()">--><!--TALVEZ REMOVER-->
+
+            </div>
 
         </div>
 
-    </div>
+        <!--tela de pontuação-->
+        <div id="pontuacao" class="container">
 
-    <!--tela de pontuação-->
-    <div id="pontuacao">
-        <div>Pontuação</div>
-        <div id="totalPontos"></div>
-        <input type="button" value="Recomeçar" onclick="window.location.reload()">
-    </div>
+            <div class="row text-center">
+                <h1 class="col-12 texto_titulo">PONTUAÇÃO</h1>
+                <br>
+                <div class="col-12 mt-3" id="texto_pontuacao">Fulano, sua pontuação foi xx de 100</div>
+                <br>
+            
+                <!--<input type="button" id="recomecar" value="" onclick="window.location.reload()">-->
+                <div class="col-12 mt-5">
+                    <input type="button" value="Recomeçar" class="btn btn-outline-primary" onclick="window.location.reload()">
+                    <!--<img src="img/restart.png" class="" height="38" width="38" onclick="window.location.reload()">-->
+                </div>
+
+            </div>
+        </div>
+    
+        <footer class="">Copyright &copy; LVC - PokeQuiz</footer>
+
+        <script>
+            document.addEventListener("keydown", KeyCheck)
+            function KeyCheck(event){
+                let KeyID = event.keyCode
+                if(KeyID == 13){
+                    iniciarQuiz()
+                }
+
+            }
+        </script>
 
 
-
+</div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
