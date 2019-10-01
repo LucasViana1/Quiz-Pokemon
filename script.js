@@ -151,9 +151,14 @@ function geraAlternativas(numOpcao){
     //coloca img do pokemon certo que foi respondido na tabela
     document.getElementById(`poke${perguntaAtual - 1}`).src = document.getElementById('imgPoke').src
 
+    //gif de load
+    document.getElementById('togepi').style.display = 'flex'
+    document.getElementById('imgPoke').style.display = 'none'
+   
+
     setTimeout(function(){
         ocultaAlertas()
-    },2000)
+    },1600)
 
     //caso seja respondido todas as perguntas, mostrar a pontuação
     if(perguntaAtual == 11){
@@ -169,7 +174,10 @@ function geraAlternativas(numOpcao){
 
         setTimeout(function(){
             iniciarQuiz()
-        },2000)
+            document.getElementById('imgPoke').style.display = 'flex'
+            document.getElementById('togepi').style.display = 'none'
+            
+        },1600)
     }
     
 }

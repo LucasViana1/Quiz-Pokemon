@@ -13,18 +13,35 @@
 </head>
 <body onload="gerarQuiz()">
         
+    <div class="a">
+        <img class="spinner" src="img/charizard.gif" width="130" height="130">
+    </div>
+
     <div class="container">
         <audio src="som.wav" id="som"></audio>
+   
+
+        <script>            
+            window.addEventListener('load', () => {
+                setTimeout(tirarLoading, 1500)
+                
+            })
+            function tirarLoading() {
+                let $a = document.getElementsByClassName('a')[0]
+                $a.style.display = "none"
+            }
+         
+        </script>
        
         <div id="musica">
-                <i id="paus" class="far fa-pause-circle botoes-players" onclick="pause()"></i>
-                <i id="play" class="far fa-play-circle botoes-players" onclick="play()" style="display: none;"></i>
-            </div>
+            <i id="paus" class="far fa-pause-circle botoes-players" onclick="pause()" style="display: none;"></i>
+            <i id="play" class="far fa-play-circle botoes-players" onclick="play()" ></i>
+        </div>
         
         <script>
    
             let som = document.getElementById('som')
-            som.play()
+            //som.play()
             function play(){
                 som.play()
                 document.getElementById('paus').style.display = 'flex'
@@ -133,7 +150,10 @@
             <!--<p>nº pergunta</p>--> 
             <div id="painel" class="col-6 ml-5">
                 <div id="n" class="col-12 text-center"></div> <br>
-                <img src="" id="imgPoke">
+                <div style="height: 40vh;">
+                    <img src="" id="imgPoke">
+                    <img src="img/togepi.gif" id="togepi" style="display: none;">
+                </div>
                 <div id="opcao1" onclick="geraAlternativas(1)" class="btn btn-primary col-12 mt-2"></div><br>
                 <div id="opcao2" onclick="geraAlternativas(2)" class="btn btn-primary col-12 mt-2"></div><br>
                 <div id="opcao3" onclick="geraAlternativas(3)" class="btn btn-primary col-12 mt-2"></div><br>

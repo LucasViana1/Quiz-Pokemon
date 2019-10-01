@@ -31,6 +31,12 @@
     margin: auto;
     width: 280px !important;
 }
+#togepi{
+    margin: auto;
+    width: 280px !important;
+    transition: all 5s linear !important;
+
+}
 .tamanho-img{
     height: 38px;
     width: 38px;
@@ -91,4 +97,32 @@ footer{
     margin-top: 40%;
     font-size: 275%;
     color: rgb(168, 0, 0);
+}
+.spinner {
+    /*border: 8px solid rgba(0, 0, 0, 0.1);
+    border-left-color: #22a6b3;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;*/
+    animation: spin 10s linear infinite;
+
+}
+
+.a {
+    position: fixed;
+    display: flex;
+    z-index: 1;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.788);
+}
+@keyframes spin {
+    from {
+        transform: translateX(10vw);
+    }
+    to {
+        transform: translateX(-100vw);
+    }
 }
