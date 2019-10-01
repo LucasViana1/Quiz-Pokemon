@@ -153,7 +153,7 @@ function geraAlternativas(numOpcao){
 
     setTimeout(function(){
         ocultaAlertas()
-    },300)
+    },2000)
 
     //caso seja respondido todas as perguntas, mostrar a pontuação
     if(perguntaAtual == 11){
@@ -169,7 +169,7 @@ function geraAlternativas(numOpcao){
 
         setTimeout(function(){
             iniciarQuiz()
-        },300)
+        },2000)
     }
     
 }
@@ -377,6 +377,13 @@ function pesquisaPokemon(nome){
     })
 
     return retornoImg
+}
+
+function gira(){
+ 
+   alert('2')
+   //document.getElementById('pkb').setAttribute('class','pokeBusca')
+
 }
 
 //modelo numero aleatorio:

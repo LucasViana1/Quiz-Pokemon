@@ -6,14 +6,38 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="script.js"></script>
     <link rel="icon" href="img/icone_pergunta.png">
-
+    <script src="https://kit.fontawesome.com/68f11c2556.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <title>Quiz</title>
 </head>
 <body onload="gerarQuiz()">
-
+        
     <div class="container">
+        <audio src="som.wav" id="som"></audio>
+       
+        <div id="musica">
+                <i id="paus" class="far fa-pause-circle botoes-players" onclick="pause()"></i>
+                <i id="play" class="far fa-play-circle botoes-players" onclick="play()" style="display: none;"></i>
+            </div>
+        
+        <script>
+   
+            let som = document.getElementById('som')
+            som.play()
+            function play(){
+                som.play()
+                document.getElementById('paus').style.display = 'flex'
+                document.getElementById('paus').style.display = 'inline-block'
+                document.getElementById('play').style.display = 'none'
+            }
+            function pause(){             
+                som.pause()
+                document.getElementById('paus').style.display = 'none'
+                document.getElementById('play').style.display = 'flex'
+                document.getElementById('play').style.display = 'inline-block'
+            }
+        </script>
 
         <nav class="m-auto text-center">
 
@@ -24,7 +48,7 @@
         
         <!--tela de inicio-->
         <div class="container text-center" id="inicio">
-            <h1 class="texto_titulo" style="margin-bottom: 30px;">POKEQUIZ</h1>
+            <h1 class="texto_titulo" style="margin-bottom: 30px;">POKÉQUIZ</h1>
             <p class="texto_comeco" style="margin-bottom: 25px;">Qual seu nome?</p>
             <input type="text" id="jogador" style="margin-bottom: 20px;">
             <br>
@@ -143,8 +167,9 @@
 
             </div>
         </div>
-    
-        <footer class="">Copyright &copy; LVC - PokeQuiz</footer>
+
+        
+        <footer class="">Copyright &copy; LVC - PokéQuiz</footer>
 
         <script>
             document.addEventListener("keydown", KeyCheck)
