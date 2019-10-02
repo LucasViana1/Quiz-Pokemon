@@ -38,7 +38,7 @@ async function gerarQuiz(){
     }
     
     numeros.sort(sortfunction)//apenas para teste
-    console.log(numeros)
+    //console.log(numeros)
     
     //requisição retornando dados do pokemon
      //array objeto pokemons
@@ -62,7 +62,7 @@ async function gerarQuiz(){
         //questao++
         
     }
-    console.log(arrayPoke)
+    //console.log(arrayPoke)
 }
 
 let perguntaAtual = 1
@@ -101,13 +101,13 @@ function iniciarQuiz(){//talvez alterar para o nome de 'proximaPergunta'
             let opcao = document.getElementById(`opcao${i+1}`)
             //opcao.setAttribute('class', `${arrayAlternativas[i].nome} btn btn-primary`)
             opcao.innerHTML = arrayAlternativas[i].nome
-            console.log(opcao.getAttribute('id'))
+            //console.log(opcao.getAttribute('id'))
         }
     
         //selecionar aleatoriamente uma das opções como certa e salvar para testar posteriormente se está certo a alternativa selecionada
         //por ser usado no array, vai de 0 a 3 (totalizando 4)
         let selecionaCorreta = Math.floor(Math.random() * 4)
-        console.log(selecionaCorreta)
+        //console.log(selecionaCorreta)
     
         //colocar a img da opção certa
         document.getElementById('imgPoke').src = arrayAlternativas[selecionaCorreta].front_default
@@ -120,14 +120,26 @@ function iniciarQuiz(){//talvez alterar para o nome de 'proximaPergunta'
 
 }
 
+//teste bloqueio button
+function bloqueia(elemento){
+    //console.log(elemento);
+    elemento.disabled = true;
+    //console.log(elemento);
+}
+
 let pontuacao = 0
 
 //corrige a resposta da pergunta atual, e após alguns segundos avança para a proxima, recebe como parametro o numero da opção selecionada
 function geraAlternativas(numOpcao){
+    //tira temporariamente evento de onclick do button
+    for(let i = 0; i < 4; i++){
+        document.getElementById(`opcao${i+1}`).disabled = true
+    }
+    
     
     //compara se a imagem da opção selecionada é igual a imagem que foi mostrada na pergunta
     if(arrayAlternativas[numOpcao-1].front_default == document.getElementById('imgPoke').src){
-        console.log("ACERTOU")
+        //console.log("ACERTOU")
         //document.getElementById('msgAcerto').style.display = 'flex'//alerta (talvez remover)
         document.getElementById(`opcao${numOpcao}`).style.backgroundColor = 'green'
         document.getElementById(`img${perguntaAtual - 1}`).src = imgCerto// icone de certo
@@ -135,7 +147,7 @@ function geraAlternativas(numOpcao){
         pontuacao += 10//caso acertou ganha 10 pontos
     }
     else{
-        console.log("ERROU")
+        //console.log("ERROU")
         //document.getElementById('msgErro').style.display = 'flex'
         document.getElementById(`opcao${numOpcao}`).style.backgroundColor = 'red'
         document.getElementById(`img${perguntaAtual - 1}`).src = imgErrado// icone errado
@@ -143,11 +155,12 @@ function geraAlternativas(numOpcao){
         //condição para descobrir qual opção é a correta para dar feedback visual
         for(let i in arrayAlternativas){
             if(arrayAlternativas[i].front_default == document.getElementById('imgPoke').src){
-                console.log(`opcao${Number(i)+1}`)
+                //console.log(`opcao${Number(i)+1}`)
                 document.getElementById(`opcao${Number(i)+1}`).style.backgroundColor = 'green'
             }
         }
     }
+    
     //coloca img do pokemon certo que foi respondido na tabela
     document.getElementById(`poke${perguntaAtual - 1}`).src = document.getElementById('imgPoke').src
 
@@ -162,13 +175,16 @@ function geraAlternativas(numOpcao){
 
     //caso seja respondido todas as perguntas, mostrar a pontuação
     if(perguntaAtual == 11){
-        console.log("FIM")
-        //exibe tela de pontuação
-        document.getElementById('pontuacao').style.display =  'flex'
-        //oculta tela de perguntas
-        document.getElementById('perguntas').style.display =  'none'
-        //processa os dados e elementos pertinentes a pontuação do jogador
-        geraPontuacao()
+        //console.log("FIM")
+        setTimeout(function(){
+            //exibe tela de pontuação
+            document.getElementById('pontuacao').style.display =  'flex'
+            //oculta tela de perguntas
+            document.getElementById('perguntas').style.display =  'none'
+            //processa os dados e elementos pertinentes a pontuação do jogador
+            geraPontuacao()
+            
+        },1600)
     }
     else{
 
@@ -176,13 +192,22 @@ function geraAlternativas(numOpcao){
             iniciarQuiz()
             document.getElementById('imgPoke').style.display = 'flex'
             document.getElementById('togepi').style.display = 'none'
+            //volta o evento de onclick do button
+            for(let i = 0; i < 4; i++){
+                document.getElementById(`opcao${i+1}`).disabled = false
+            }
             
         },1600)
     }
-    
 }
 
 function geraPontuacao(){
+    if(pontuacao < 60){
+        document.getElementById('giphy').style.display = 'flex'
+    }
+    else{
+        document.getElementById('pikachu').style.display = 'flex'
+    }
     document.getElementById('texto_pontuacao').innerHTML = `<b>${nomeJogador}</b>, sua pontuação foi <b>${pontuacao}</b> de 100`
 }
 
@@ -230,7 +255,7 @@ function mostraPerguntas(){
 //MODELO
 async function chama(){
     let x = await requisitaDadosPokemon("1")
-    console.log(x)
+   // console.log(x)
 }
 
 //caracteristicas pokemon
@@ -279,7 +304,7 @@ function gerarQuizteste(/*nomeParticipante, dificuldade*/){
         return response.json()
     })
     .then(dados => {
-        console.log(dados.results)
+       // console.log(dados.results)
 
         //copulando array com dados dos pokemons
         for(let i = 1; i <= 10; i++){//nº pergunta
@@ -300,7 +325,7 @@ function gerarQuizteste(/*nomeParticipante, dificuldade*/){
         }
 
         for(let i = 0; i < arrayPoke.length; i++){
-            console.log("TESTE: "+arrayPoke[i])
+            //console.log("TESTE: "+arrayPoke[i])
             //console.log("TESTE: ")
         }
 
@@ -308,7 +333,7 @@ function gerarQuizteste(/*nomeParticipante, dificuldade*/){
         
     })
     .then(objPoke =>{
-        console.log(objPoke)
+        //console.log(objPoke)
 
         //objPoke[0].setImg( pesquisaPokemon(objPoke[0].nome))
         //console.log(objPoke[0]) 
@@ -329,12 +354,12 @@ function gerarQuizteste(/*nomeParticipante, dificuldade*/){
 
 //insere as imagens nos pokemon de resposta
 function getAr(){
-    console.log("aqui:")
-    console.log(ar)
+    //console.log("aqui:")
+    //console.log(ar)
 
     //acessando apenas uma das alternativas entre as 4 de uma pergunta
     for(let i = 0; i < ar.length; i+=4){
-        console.log(ar[i])
+        //console.log(ar[i])
         
     }
     //INICIO TESTE
@@ -347,7 +372,7 @@ function getAr(){
             return data
         })
 
-        console.log(response)
+        //console.log(response)
         //return data.order
     }
     
@@ -392,6 +417,22 @@ function gira(){
    alert('2')
    //document.getElementById('pkb').setAttribute('class','pokeBusca')
 
+}
+
+function restart(){
+    window.location.reload()
+    /*perguntaAtual = 1
+    arrayAlternativas = []
+    arrayPoke = []
+    pontuacao = 0
+    ar = []
+
+    document.getElementById('pontuacao').style.display = 'none'
+    document.getElementById('perguntas').style.display = 'flex'
+
+    gerarQuiz()
+    iniciarQuiz()*/
+    
 }
 
 //modelo numero aleatorio:

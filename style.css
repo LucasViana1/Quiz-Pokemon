@@ -46,12 +46,12 @@ table{
 }
 #texto_pontuacao{
     font-family: "Palatino Linotype", "Book Antiqua", serif;
-    font-size: 140%;
+    font-size: 200%;
     font-style: italic;
 }
 .texto_titulo{
     font-family: "Palatino Linotype", "Book Antiqua", serif;
-    font-size: 300%;
+    font-size: 400%;
     font-weight: bold;
     font-style: italic;
     color: rgb(1, 1, 117);
@@ -125,4 +125,14 @@ footer{
     to {
         transform: translateX(-100vw);
     }
+}
+
+#adivinha_poke{
+    font-size: 250%;
+    font-weight: bold;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    color: rgb(218, 218, 4); /*ALTERAR COR DINAMICAMENTE*/
+    -webkit-text-stroke-width: 2px; /* largura da borda */
+    -webkit-text-stroke-color: black; /* cor da borda */
+    margin-bottom: 10%;
 }

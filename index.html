@@ -65,9 +65,9 @@
         
         <!--tela de inicio-->
         <div class="container text-center" id="inicio">
-            <h1 class="texto_titulo" style="margin-bottom: 30px;">POKÉQUIZ</h1>
-            <p class="texto_comeco" style="margin-bottom: 25px;">Qual seu nome?</p>
-            <input type="text" id="jogador" style="margin-bottom: 20px;">
+            <h1 class="texto_titulo" style="margin-bottom: 68px;">POKÉQUIZ</h1>
+            <p class="texto_comeco" style="margin-bottom: 36px;">Qual seu nome?</p>
+            <input type="text" id="jogador" style="margin-bottom: 35px;">
             <br>
             <input type="button" class="btn btn-primary mt-2" value="Começar Quiz" onclick="iniciarQuiz()">
         </div>
@@ -149,15 +149,16 @@
 
             <!--<p>nº pergunta</p>--> 
             <div id="painel" class="col-6 ml-5">
+                <div id="adivinha_poke">QUEM É ESSE POKÉMON?</div>
                 <div id="n" class="col-12 text-center"></div> <br>
                 <div style="height: 40vh;">
                     <img src="" id="imgPoke">
                     <img src="img/togepi.gif" id="togepi" style="display: none;">
                 </div>
-                <div id="opcao1" onclick="geraAlternativas(1)" class="btn btn-primary col-12 mt-2"></div><br>
-                <div id="opcao2" onclick="geraAlternativas(2)" class="btn btn-primary col-12 mt-2"></div><br>
-                <div id="opcao3" onclick="geraAlternativas(3)" class="btn btn-primary col-12 mt-2"></div><br>
-                <div id="opcao4" onclick="geraAlternativas(4)" class="btn btn-primary col-12 mt-2"></div><br>
+                <button id="opcao1" onclick="geraAlternativas(1)" class="btn btn-primary col-12 mt-2"></button><br>
+                <button id="opcao2" onclick="geraAlternativas(2)" class="btn btn-primary col-12 mt-2"></button><br>
+                <button id="opcao3" onclick="geraAlternativas(3)" class="btn btn-primary col-12 mt-2"></button><br>
+                <button id="opcao4" onclick="geraAlternativas(4)" class="btn btn-primary col-12 mt-2"></button><br>
             </div>
 
                 
@@ -171,25 +172,27 @@
         </div>
 
         <!--tela de pontuação-->
-        <div id="pontuacao" class="container">
+        <div id="pontuacao" class="container mt-5">
 
             <div class="row text-center">
                 <h1 class="col-12 texto_titulo">PONTUAÇÃO</h1>
                 <br>
-                <div class="col-12 mt-3" id="texto_pontuacao">Fulano, sua pontuação foi xx de 100</div>
+                <div class="col-12 mt-5" id="texto_pontuacao">Fulano, sua pontuação foi xx de 100</div>
                 <br>
             
                 <!--<input type="button" id="recomecar" value="" onclick="window.location.reload()">-->
                 <div class="col-12 mt-5">
-                    <input type="button" value="Recomeçar" class="btn btn-outline-primary" onclick="window.location.reload()">
+                    <input type="button" value="Recomeçar" class="btn btn-outline-primary" onclick="restart()">
                     <!--<img src="img/restart.png" class="" height="38" width="38" onclick="window.location.reload()">-->
                 </div>
 
             </div>
+            <img id="pikachu" src="img/pikachu.gif" height="300" width="300" style="display: none;">
+            <img id="giphy" src="img/giphy.gif" height="300" width="300" style="display: none;">
         </div>
 
         
-        <footer class="">Copyright &copy; LVC - PokéQuiz</footer>
+        <!--<footer class="">Copyright &copy; LVC - PokéQuiz</footer>-->
 
         <script>
             document.addEventListener("keydown", KeyCheck)
